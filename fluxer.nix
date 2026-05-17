@@ -32,6 +32,7 @@
   libXrandr,
   libXrender,
   libXScrnSaver,
+  libXt,
   libXtst,
   libxcb,
   libuuid,
@@ -95,6 +96,7 @@ let
     libXrandr
     libXrender
     libXScrnSaver
+    libXt
     libXtst
     libxcb
     libuuid

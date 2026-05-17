@@ -32,6 +32,7 @@
   libXrandr,
   libXrender,
   libXScrnSaver,
+  libXt,
   libXtst,
   libxcb,
   libuuid,
@@ -48,6 +49,8 @@
   xdg-utils,
   libsecret,
   libnotify,
+  hunspell,
+  libfido2,
 }:
 
 let
@@ -95,6 +98,7 @@ let
     libXrandr
     libXrender
     libXScrnSaver
+    libXt
     libXtst
     libxcb
     libuuid
@@ -110,6 +114,8 @@ let
     libkrb5
     libsecret
     libnotify
+    hunspell
+    libfido2
     stdenv.cc.cc
   ];
 in
