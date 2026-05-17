@@ -14,8 +14,8 @@ This flake packages the [Electron desktop client](https://github.com/fluxerapp/f
 
 | Package | Description | Platforms |
 |---------|-------------|-----------|
-| `fluxer` | Stable desktop client (v0.0.8) | Linux (x86_64, aarch64) |
-| `fluxer-canary` | Canary desktop client (v0.0.225) | Linux (x86_64, aarch64) |
+| `fluxer` | Stable desktop client | Linux (x86_64, aarch64) |
+| `fluxer-canary` | Canary desktop client | Linux (x86_64, aarch64) |
 
 ---
 
@@ -38,8 +38,6 @@ nix run github:Hy4ri/fluxer-flake
 # Run the canary desktop client
 nix run github:Hy4ri/fluxer-flake#fluxer-canary
 ```
-
-> **Note:** Replace `Hy4ri` with the GitHub username or organization that hosts this flake.
 
 ---
 
