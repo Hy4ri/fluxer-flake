@@ -1,0 +1,12 @@
+# Nix
+result
+result-*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+*.swp
+*.swo
+*~
