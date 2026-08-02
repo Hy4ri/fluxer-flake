@@ -35,7 +35,7 @@ for channel in "${CHANNELS[@]}"; do
 
   for arch in "${ARCHES[@]}"; do
     # Always fetch the per-arch manifest to avoid cross-arch hash mismatches
-    manifest=$(curl -fsSL "https://api.fluxer.app/dl/desktop/$channel/linux/$arch/latest")
+    manifest=$(curl -fsSL --connect-timeout 10 --max-time 30 --retry 3 --retry-delay 3 --retry-all-errors "https://api.fluxer.app/dl/desktop/$channel/linux/$arch/latest" || true)
 
     # Grab the version from the first arch (both arches share the same version)
     if [[ "$arch" == "x64" ]]; then
