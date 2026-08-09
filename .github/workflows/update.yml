@@ -39,7 +39,13 @@ jobs:
           UPDATE_NEEDED=false
 
           for channel in stable canary; do
-            LATEST=$(fetch_url "https://api.fluxer.app/dl/desktop/$channel/linux/x64/latest" | jq -r '.version' 2>/dev/null || true)
+            # Primary host first, then fall back to web.fluxer.app (mirrors the
+            # same payload) when the primary hangs or drops the connection.
+            for base in "https://api.fluxer.app/dl/desktop" "https://web.fluxer.app/api/dl/desktop"; do
+              LATEST=$(fetch_url "$base/$channel/linux/x64/latest" | jq -r '.version' 2>/dev/null || true)
+              [ -n "$LATEST" ] && [ "$LATEST" != "null" ] && break
+              echo "$channel: no version from $base, trying next host" >&2
+            done
             CURRENT=$(jq -r ".$channel" version.json)
 
             if [ -z "$LATEST" ] || [ "$LATEST" = "null" ]; then
