@@ -57,7 +57,7 @@ import ./mkFluxer.nix (args // {
   pname = "fluxer-canary";
   channel = "canary";
   version = (builtins.fromJSON (builtins.readFile ./version.json)).canary;
-  extractDir = "Fluxer Canary";
+  extractDir = "fluxer-canary";
   hashMap = {
     x86_64-linux = "sha256-ETzUrJzrvCHSfEaFsGRYngR0oyZGasvKzIxyH0VdxUg="; # canary-deb-x64
     aarch64-linux = "sha256-W2ZMtbPP9uTzfS6gA6SGxyVYXmeQrrmS32w9rxeUaRI="; # canary-deb-arm64
