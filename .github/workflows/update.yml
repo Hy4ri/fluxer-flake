@@ -69,6 +69,10 @@ jobs:
           chmod +x ./update-version.sh
           ./update-version.sh
 
+      - name: Update flake.lock
+        if: steps.check.outputs.update_needed == 'true'
+        run: nix flake update
+
       - name: Verify Builds
         id: build_verify
         if: steps.check.outputs.update_needed == 'true'
@@ -87,7 +91,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add version.json fluxer.nix fluxer-canary.nix
+          git add version.json fluxer.nix fluxer-canary.nix flake.lock
           git commit -m "chore: update fluxer versions" || echo "Nothing to commit"
           git push
 

@@ -2,15 +2,8 @@ name: CI
 
 on:
   push:
-    branches:
-      - master
-    paths:
-      - '**.nix'
-      - 'version.json'
-      - 'flake.lock'
   pull_request:
-    branches:
-      - master
+  workflow_dispatch:
 
 jobs:
   build:
