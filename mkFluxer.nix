@@ -119,6 +119,8 @@ let
   ];
 
   runtimeLibs = baseRuntimeLibs ++ extraRuntimeLibs;
+
+  appName = "app.fluxer.FluxerDesktop${lib.optionalString (channel == "canary") "Canary"}";
 in
 
 stdenv.mkDerivation {
@@ -157,8 +159,8 @@ stdenv.mkDerivation {
     fi
 
     # Patch .desktop file if present
-    if [ -f "$out/share/applications/${pname}.desktop" ]; then
-      substituteInPlace "$out/share/applications/${pname}.desktop" \
+    if [ -f "$out/share/applications/${appName}.desktop" ]; then
+      substituteInPlace "$out/share/applications/${appName}.desktop" \
         --replace-fail "/opt/${extractDir}/${pname}" "$out/bin/${pname}"
     fi
 
