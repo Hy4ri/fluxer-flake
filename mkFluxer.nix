@@ -162,6 +162,8 @@ stdenv.mkDerivation {
     if [ -f "$out/share/applications/${appName}.desktop" ]; then
       substituteInPlace "$out/share/applications/${appName}.desktop" \
         --replace-fail "/opt/${extractDir}/${pname}" "$out/bin/${pname}"
+      substituteInPlace "$out/share/applications/${appName}.desktop" \
+        --replace-fail fluxer-launcher fluxer
     fi
 
     mkdir -p $out/bin
