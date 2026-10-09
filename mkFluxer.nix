@@ -163,7 +163,7 @@ stdenv.mkDerivation {
       substituteInPlace "$out/share/applications/${appName}.desktop" \
         --replace-fail "/opt/${extractDir}/${pname}" "$out/bin/${pname}"
       substituteInPlace "$out/share/applications/${appName}.desktop" \
-        --replace-fail fluxer-launcher fluxer
+        --replace-fail "${pname}-launcher" "${pname}"
     fi
 
     mkdir -p $out/bin
