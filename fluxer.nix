@@ -57,7 +57,7 @@ import ./mkFluxer.nix (args // {
   version = (builtins.fromJSON (builtins.readFile ./version.json)).stable;
   extractDir = "Fluxer";
   hashMap = {
-    x86_64-linux = "sha256-NwF4INcU+dBstP1PQek20AzA9LxFptGcHWuP7SyRAho="; # deb-x64
-    aarch64-linux = "sha256-WktoM6KZ7QgczhaaVZ9WUmKp+LvR3B2xF/4Q3Uh/j1I="; # deb-arm64
+    x86_64-linux = "sha256-qI0nmnb77R9qpNsCxBJ9yroJvhRHJqAbV1PNGxnSRno="; # deb-x64
+    aarch64-linux = "sha256-FBx9s3tAK/cQFG35F2RyQS32rNORAlINIhGJrtsjMR4="; # deb-arm64
   };
 })
