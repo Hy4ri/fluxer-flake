@@ -49,6 +49,7 @@
   xdg-utils,
   libsecret,
   libnotify,
+  libva,
   hunspell,
   libfido2,
 }@args:

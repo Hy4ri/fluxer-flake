@@ -51,6 +51,7 @@
   xdg-utils,
   libsecret,
   libnotify,
+  libva,
   # Configuration parameters (passed by wrapper files)
   pname,
   channel,
@@ -115,6 +116,7 @@ let
     libkrb5
     libsecret
     libnotify
+    libva
     stdenv.cc.cc
   ];
 
@@ -169,6 +171,7 @@ stdenv.mkDerivation {
     mkdir -p $out/bin
     makeWrapper "$out/opt/${pname}/${pname}" "$out/bin/${pname}" \
       --prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath runtimeLibs} \
+      --suffix LD_LIBRARY_PATH : /run/opengl-driver/lib \
       --prefix PATH : ${lib.makeBinPath [ xdg-utils ]}
 
     runHook postInstall

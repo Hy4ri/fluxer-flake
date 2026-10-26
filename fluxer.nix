@@ -49,6 +49,7 @@
   xdg-utils,
   libsecret,
   libnotify,
+  libva,
 }@args:
 
 import ./mkFluxer.nix (args // {
