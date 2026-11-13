@@ -5,6 +5,8 @@
   dpkg,
   autoPatchelfHook,
   makeWrapper,
+  wrapGAppsHook3,
+  gsettings-desktop-schemas,
   alsa-lib,
   at-spi2-atk,
   at-spi2-core,
