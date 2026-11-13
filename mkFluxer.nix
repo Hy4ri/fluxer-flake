@@ -141,6 +141,13 @@ stdenv.mkDerivation {
 
   autoPatchelfIgnoreMissingDeps = [ "libc.musl-*.so.*" ];
 
+  # Fluxer re-launches itself through process.execPath (its own .desktop
+  # entry, autostart entry, and app.relaunch), which bypasses the wrapper.
+  # Put the dlopen()ed libs and the host driver dir in RUNPATH so the bare
+  # binary still finds libEGL, libva, and the GPU drivers.
+  runtimeDependencies = map lib.getLib runtimeLibs;
+  appendRunpaths = [ "/run/opengl-driver/lib" ];
+
   buildInputs = runtimeLibs;
 
   unpackPhase = ''
