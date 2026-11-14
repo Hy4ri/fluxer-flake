@@ -7,6 +7,8 @@
   dpkg,
   autoPatchelfHook,
   makeWrapper,
+  wrapGAppsHook3,
+  gsettings-desktop-schemas,
   alsa-lib,
   at-spi2-atk,
   at-spi2-core,
@@ -137,6 +139,7 @@ stdenv.mkDerivation {
     dpkg
     autoPatchelfHook
     makeWrapper
+    wrapGAppsHook3
   ];
 
   autoPatchelfIgnoreMissingDeps = [ "libc.musl-*.so.*" ];
@@ -148,7 +151,13 @@ stdenv.mkDerivation {
   runtimeDependencies = map lib.getLib runtimeLibs;
   appendRunpaths = [ "/run/opengl-driver/lib" ];
 
-  buildInputs = runtimeLibs;
+  # GTK needs the gsettings schemas to read desktop settings (text scale,
+  # theme, file chooser). Without them, Fluxer only works when the launching
+  # environment happens to provide them.
+  buildInputs = runtimeLibs ++ [ gsettings-desktop-schemas ];
+
+  # Build one wrapper ourselves, with the GApps args added (see preFixup).
+  dontWrapGApps = true;
 
   unpackPhase = ''
     runHook preUnpack
@@ -175,13 +184,17 @@ stdenv.mkDerivation {
         --replace-fail "${pname}-launcher" "${pname}"
     fi
 
+    runHook postInstall
+  '';
+
+  # gappsWrapperArgs is only filled in just before fixup.
+  preFixup = ''
     mkdir -p $out/bin
     makeWrapper "$out/opt/${pname}/${pname}" "$out/bin/${pname}" \
+      "''${gappsWrapperArgs[@]}" \
       --prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath runtimeLibs} \
       --suffix LD_LIBRARY_PATH : /run/opengl-driver/lib \
       --prefix PATH : ${lib.makeBinPath [ xdg-utils ]}
-
-    runHook postInstall
   '';
 
   meta = {
