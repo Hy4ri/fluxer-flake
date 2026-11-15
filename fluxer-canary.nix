@@ -62,8 +62,8 @@ import ./mkFluxer.nix (args // {
   version = (builtins.fromJSON (builtins.readFile ./version.json)).canary;
   extractDir = "fluxer-canary";
   hashMap = {
-    x86_64-linux = "sha256-B4oqu+10V7i2GVF5Ix3Ir/Bti3UOxOZ4E/VWb8pAerY="; # canary-deb-x64
-    aarch64-linux = "sha256-QZr7Y7E+mRekCVUFyUCWmWrRth9RF66cgk3W0HjLupU="; # canary-deb-arm64
+    x86_64-linux = "sha256-H16qD6xJnarJk4fCdEpUy0rSEB/nZtwbpR3VRUpe1f8="; # canary-deb-x64
+    aarch64-linux = "sha256-540KAv7wjjCABf5dv01srNnVmlRotGQ+Phl3yUpzHXE="; # canary-deb-arm64
   };
   extraRuntimeLibs = [ hunspell libfido2 ];
 })
