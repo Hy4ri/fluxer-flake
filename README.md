@@ -1,10 +1,10 @@
 # Fluxer Nix Flake
 
-[![Fluxer Version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.fluxer.app%2Fdl%2Fdesktop%2Fstable%2Flinux%2Fx64%2Flatest&query=%24.version&label=stable&color=blue&logo=fluxer)](https://fluxer.app)
-[![Canary Version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.fluxer.app%2Fdl%2Fdesktop%2Fcanary%2Flinux%2Fx64%2Flatest&query=%24.version&label=canary&color=purple&logo=fluxer)](https://fluxer.app/canary)
+[![Fluxer Version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fpkgs.fluxer.com%2Fdesktop%2Fstable%2Flinux%2Fx64%2Flatest&query=%24.version&label=stable&color=blue&logo=fluxer)](https://fluxer.com)
+[![Canary Version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fpkgs.fluxer.com%2Fdesktop%2Fcanary%2Flinux%2Fx64%2Flatest&query=%24.version&label=canary&color=purple&logo=fluxer)](https://fluxer.com/download)
 [![Update Status](https://img.shields.io/github/actions/workflow/status/Hy4ri/fluxer-flake/update.yml?label=auto-update)](https://github.com/Hy4ri/fluxer-flake/actions/workflows/update.yml)
 
-Run and install the [Fluxer](https://fluxer.app) desktop client on NixOS, Home Manager, or any Linux system with Nix.
+Run and install the [Fluxer](https://fluxer.com) desktop client on NixOS, Home Manager, or any Linux system with Nix.
 
 Fluxer is an open-source, self-hostable chat platform for friends, groups, and communities, with messages, voice and video calls, and media sharing.
 

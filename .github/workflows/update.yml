@@ -40,9 +40,8 @@ jobs:
           UPDATE_NEEDED=false
 
           for channel in stable canary; do
-            # Primary host first, then fall back to web.fluxer.app (mirrors the
-            # same payload) when the primary hangs or drops the connection.
-            for base in "https://api.fluxer.app/dl/desktop" "https://web.fluxer.app/api/dl/desktop"; do
+            # Primary package host first, then fall back to legacy api.fluxer.app redirect.
+            for base in "https://pkgs.fluxer.com/desktop" "https://api.fluxer.app/dl/desktop"; do
               LATEST=$(fetch_url "$base/$channel/linux/x64/latest" | jq -r '.version' 2>/dev/null || true)
               [ -n "$LATEST" ] && [ "$LATEST" != "null" ] && break
               echo "$channel: no version from $base, trying next host" >&2
@@ -50,7 +49,7 @@ jobs:
             CURRENT=$(jq -r ".$channel" version.json)
 
             if [ -z "$LATEST" ] || [ "$LATEST" = "null" ]; then
-              die "Failed to fetch latest $channel version from api.fluxer.app. Last error: $(tail -n 1 "$ERR_LOG" 2>/dev/null || echo 'unknown')"
+              die "Failed to fetch latest $channel version from pkgs.fluxer.com. Last error: $(tail -n 1 "$ERR_LOG" 2>/dev/null || echo 'unknown')"
             fi
 
             echo "$channel: latest=$LATEST current=$CURRENT"

@@ -35,7 +35,7 @@ for channel in "${CHANNELS[@]}"; do
 
   for arch in "${ARCHES[@]}"; do
     # Always fetch the per-arch manifest to avoid cross-arch hash mismatches
-    manifest=$(curl -fsSL --connect-timeout 10 --max-time 30 --retry 3 --retry-delay 3 --retry-all-errors "https://api.fluxer.app/dl/desktop/$channel/linux/$arch/latest" || true)
+    manifest=$(curl -fsSL --connect-timeout 10 --max-time 30 --retry 3 --retry-delay 3 --retry-all-errors "https://pkgs.fluxer.com/desktop/$channel/linux/$arch/latest" || true)
 
     # Grab the version from the first arch (both arches share the same version)
     if [[ "$arch" == "x64" ]]; then
@@ -58,7 +58,7 @@ for channel in "${CHANNELS[@]}"; do
       sri_hash=$(nix hash convert --hash-algo sha256 --to sri "$api_hash")
     else
       echo "  $arch: downloading to compute hash..."
-      url="https://web.fluxer.app/api/dl/desktop/$channel/linux/$arch/${NEW_VERSIONS[$channel]}/deb"
+      url="https://pkgs.fluxer.com/desktop/$channel/linux/$arch/${NEW_VERSIONS[$channel]}/deb"
       sri_hash=$(get_hash "$url") || { echo "Error: Failed to download $channel $arch"; exit 1; }
     fi
 

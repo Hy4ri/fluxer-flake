@@ -131,7 +131,7 @@ stdenv.mkDerivation {
   inherit pname version;
 
   src = fetchurl {
-    url = "https://web.fluxer.app/api/dl/desktop/${channel}/linux/${arch}/${version}/deb";
+    url = "https://pkgs.fluxer.com/desktop/${channel}/linux/${arch}/${version}/deb";
     inherit hash;
   };
 
@@ -199,7 +199,7 @@ stdenv.mkDerivation {
 
   meta = {
     description = "Fluxer${lib.optionalString (channel == "canary") " Canary"} - Free and open source instant messaging and VoIP platform${lib.optionalString (channel == "canary") " (canary channel)"}";
-    homepage = "https://fluxer.app";
+    homepage = "https://fluxer.com";
     license = lib.licenses.agpl3Plus;
     sourceProvenance = with lib.sourceTypes; [ binaryNativeCode ];
     mainProgram = pname;
